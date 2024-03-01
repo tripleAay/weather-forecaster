@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <link rel="stylesheet" href="./dist/output.css">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+</head>
+<style>
+   
+ 
+    body{
+        padding: 0;
+        margin: 0;
+        font-family: "Merriweather", serif;
+        font-weight: 400;
+         font-style: normal;
+    }
+    #container{
+        display: flex ;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        height: 100vh;
+    }
+
+    #input{
+        width: 500px;
+        height: 30px;
+        border-radius: 9px;
+    }
+</style>
+<body>
+    <div id="container" class="container" style="background-image: url(./image/pic-cool.jpeg);">
+        <!-- Content here -->
+        <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -100px;">
+            <h1 style="color: rgb(25, 94, 198); font-size: 45px;">Welcome</h1>
+            <h1 style="color: rgb(25, 54, 198); font-size: 30px;">Check your weather forecast below</h1>
+
+        </div>
+        <div>
+            <input id="input" type="text">
+        <button onclick="weather()">check</button>
+        </div>
+      <div>
+
+        <h3 id="display "></h3>
+        <h5 id="name"></h5>
+        <h5 id="desc"></h5>
+        <h5 id="temp"></h5>
+        
+         </h3>
+       </div>
+    </div>
+
+    
+</body>
+</html>
+<script>
+
+    let name = document.getElementById("name"); 
+    let desc = document.getElementById("desc")
+    let temp = document.getElementById("temp")
+    let key='71be3a58e0aa1f1a6edb3fbfa8aaf40c'
+    let input = document.getElementById("input")
+
+    function weather(){
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`)
+        .then((result)=>result.json())
+        .then((data)=>{     
+
+            console.log(data);
+
+            let nameValue = data.name; 
+            let tempValue = data.main.temp
+            temp.innerHTML =tempValue;
+            
+            name.innerHTML =nameValue;
+            let descValue = data.weather[0].description; 
+            desc.innerHTML =descValue
+            
+        })
+
+        .catch(err=>{
+            alert("Invalid Input; Check Correctly")
+        })
+    }
+
+
+</script>
