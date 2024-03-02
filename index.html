@@ -22,6 +22,18 @@
         font-family: "Merriweather", serif;
         font-weight: 400;
          font-style: normal;
+         margin: 0;
+            padding: 0;
+            font-family: 'Helvetica', sans-serif;
+            background: linear-gradient(to right, #4e54c8, #8f94fb); /* Gradient colors */
+            background-size: cover;
+            background-attachment: fixed;
+            color: #fff; /* Text color */
+            overflow-x: hidden; /* Hide horizontal scrollbar */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
     }
     #container{
         display: flex ;
@@ -36,19 +48,36 @@
         width: 500px;
         height: 30px;
         border-radius: 9px;
+        cursor: pointer;
+    }
+    #BTN{
+        display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #4CAF50;
+    }
+    #BTN:hover{
+        background-color: #45a049
     }
 </style>
 <body>
     <div id="container" class="container" style="background-image: url(./image/pic-cool.jpeg);">
         <!-- Content here -->
         <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; margin-top: -100px;">
-            <h1 style="color: rgb(25, 94, 198); font-size: 45px;">Welcome</h1>
-            <h1 style="color: rgb(25, 54, 198); font-size: 30px;">Check your weather forecast below</h1>
+            <h1 style="color: white; font-size: 45px; cursor: pointer;">Welcome</h1>
+            <h1 style="color: white; font-size: 30px; cursor:pointer ;">Check your weather forecast below</h1>
 
         </div>
         <div>
             <input id="input" type="text">
-        <button onclick="weather()">check</button>
+        <button id="BTN" onclick="weather()">check</button>
         </div>
       <div>
 
